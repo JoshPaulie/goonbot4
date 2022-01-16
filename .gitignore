@@ -1,0 +1,6 @@
+/bot-venv
+/.env
+/.vscode
+/__pycache__/
+*.cpython-310
+*.pyc
