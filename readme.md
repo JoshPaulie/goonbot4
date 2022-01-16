@@ -8,5 +8,6 @@ Hi! Thanks for checking out the repo.
 
 ## Install
 
-ℹ GB4 isn't made with other servers in mind. It's totally for local use. Repo is public for version control and external help.
+GB4 isn't made with other servers in mind. It's totally for local use. Repo is public for version control and external help.
+
 📂 If you are making a copy for whatever reason `git clone`, rename .env.example -> .env, fill in relevant API keys
