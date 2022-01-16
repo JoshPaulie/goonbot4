@@ -1,7 +1,3 @@
-"""
-This cog is broken for whatever reason.
-The expection simply says 'Bot' object has no attribute 'all_commands', which is odd because it seems no different from the other cogs.
-"""
 import random
 import discord
 
@@ -18,7 +14,7 @@ class Rat(commands.Cog):
 
     @staticmethod
     def rat_images() -> list:
-        with open("cogs_helpers/rats.txt") as links:
+        with open("text_files/rats.txt") as links:
             rats = links.read().splitlines()
             return rats
 
@@ -34,7 +30,7 @@ class Rat(commands.Cog):
         self.rats.remove(chosen_rat)
         self.caged_rats.append(chosen_rat)
         await ctx.respond(
-            embed=discord.Embed(title="Rat", color=discord.Color.blurple()).set_image(chosen_rat)
+            embed=discord.Embed(title="Rat", color=discord.Color.blurple()).set_image(url=chosen_rat)
         )
         self.check_rat_capacity()
 
