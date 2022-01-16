@@ -1,3 +1,7 @@
+"""
+This cog is broken for whatever reason.
+The expection simply says 'Bot' object has no attribute 'all_commands', which is odd because it seems no different from the other cogs.
+"""
 import random
 import discord
 
