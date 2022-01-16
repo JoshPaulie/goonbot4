@@ -14,7 +14,8 @@ def collect_cogs():
 def load_cogs(bot):
     """Takes bot instance argument, "loads" collected cogs into it."""
     for cog in collect_cogs():
-        try:
-            bot.load_extension(cog)
-        except Exception as e:
-            console.log(f"Failed to load cog {cog}\n{e}")
+        # try:
+        #     bot.load_extension(cog)
+        # except Exception as e:
+        #     console.log(f"Failed to load cog {cog}\n{e}")
+        bot.load_extension(cog)
