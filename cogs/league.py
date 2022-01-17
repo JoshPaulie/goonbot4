@@ -1,8 +1,9 @@
 import cassiopeia
 import discord
-from config import both_servers
 from discord.commands import Option, slash_command
 from discord.ext import commands
+
+from config import both_servers
 
 SUMMONER_NAMES = [
     "bexli",

@@ -1,9 +1,10 @@
 import random
-import discord
 
-from config import both_servers
+import discord
 from discord.commands import slash_command
 from discord.ext import commands
+
+from config import both_servers
 
 
 class Rat(commands.Cog):

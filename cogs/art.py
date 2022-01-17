@@ -1,9 +1,11 @@
-from os import name
-import discord
 import random
-from config import both_servers
+from os import name
+
+import discord
 from discord.commands import slash_command
 from discord.ext import commands
+
+from config import both_servers
 
 
 class Art(commands.Cog):

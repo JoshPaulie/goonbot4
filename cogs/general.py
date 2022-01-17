@@ -1,7 +1,10 @@
-import discord
+import os
 import random
-from discord.ext import commands
+
+import discord
 from discord.commands import slash_command
+from discord.ext import commands
+
 from config import both_servers
 
 
