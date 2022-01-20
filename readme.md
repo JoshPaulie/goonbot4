@@ -1,6 +1,6 @@
 # Goonbot 4
 
-Hi! Thanks for checking out the repo.
+![logo](https://media.discordapp.net/attachments/787711120026501152/933826376207847504/IMG_0355.png)
 
 ## About
 
