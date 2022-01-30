@@ -41,44 +41,44 @@ class Twitch(commands.Cog, name="Twitch"):
         return link_embed
 
     @slash_command(guild_ids=both_servers)
-    async def dekar(self, ctx):
+    async def dekar(self, ctx: discord.ApplicationContext):
         """Link to Dekar's stream"""
-        await ctx.respond(embed=self.make_ttv_embed("dekar173"))
+        await ctx.respond(embed=self.make_ttv_embed("dekar173"))  # type: ignore
 
     @slash_command(guild_ids=both_servers)
-    async def jerma(self, ctx):
+    async def jerma(self, ctx: discord.ApplicationContext):
         """Link to Jerma's Stream"""
-        await ctx.respond(embed=self.make_ttv_embed("jerma985"))
+        await ctx.respond(embed=self.make_ttv_embed("jerma985"))  # type: ignore
 
     @slash_command(guild_ids=both_servers)
-    async def tyler1(self, ctx):
+    async def tyler1(self, ctx: discord.ApplicationContext):
         """Link to Tyler's Stream"""
-        await ctx.respond(embed=self.make_ttv_embed("loltyler1"))
+        await ctx.respond(embed=self.make_ttv_embed("loltyler1"))  # type: ignore
 
     @slash_command(guild_ids=both_servers)
-    async def happy_hob(self, ctx):
+    async def happy_hob(self, ctx: discord.ApplicationContext):
         """Link to The Happy Hob's Stream"""
-        await ctx.respond(embed=self.make_ttv_embed("the_happy_hob"))
+        await ctx.respond(embed=self.make_ttv_embed("the_happy_hob"))  # type: ignore
 
     @slash_command(guild_ids=both_servers)
-    async def dangheesling(self, ctx):
+    async def dangheesling(self, ctx: discord.ApplicationContext):
         """Link to Tyler's Stream"""
-        await ctx.respond(embed=self.make_ttv_embed("dangheesling"))
+        await ctx.respond(embed=self.make_ttv_embed("dangheesling"))  # type: ignore
 
     @slash_command(guild_ids=both_servers)
-    async def dunkstream(self, ctx):
+    async def dunkstream(self, ctx: discord.ApplicationContext):
         """Link to Dunkey's Stream"""
-        await ctx.respond(embed=self.make_ttv_embed("dunkstream"))
+        await ctx.respond(embed=self.make_ttv_embed("dunkstream"))  # type: ignore
 
     @slash_command(guild_ids=both_servers)
-    async def thebausffs(self, ctx):
+    async def thebausffs(self, ctx: discord.ApplicationContext):
         """Link to Babus's Stream"""
-        await ctx.respond(embed=self.make_ttv_embed("thebausffs"))
+        await ctx.respond(embed=self.make_ttv_embed("thebausffs"))  # type: ignore
 
     @slash_command(guild_ids=both_servers)
-    async def northernlion(self, ctx):
+    async def northernlion(self, ctx: discord.ApplicationContext):
         """Link to Northernlion's Stream"""
-        await ctx.respond(embed=self.make_ttv_embed("northernlion"))
+        await ctx.respond(embed=self.make_ttv_embed("northernlion"))  # type: ignore
 
 
 def setup(bot):

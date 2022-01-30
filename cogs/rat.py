@@ -1,10 +1,9 @@
 import random
 
 import discord
+from config import both_servers
 from discord.commands import slash_command
 from discord.ext import commands
-
-from config import both_servers
 
 
 class Rat(commands.Cog):
@@ -25,14 +24,14 @@ class Rat(commands.Cog):
             self.caged_rats = []
 
     @slash_command(guild_ids=both_servers)
-    async def rat(self, ctx):
+    async def rat(self, ctx: discord.ApplicationContext):
         """Random rat"""
         chosen_rat = random.choice(self.rats)
         self.rats.remove(chosen_rat)
         self.caged_rats.append(chosen_rat)
         await ctx.respond(
             embed=discord.Embed(title="Rat", color=discord.Color.blurple()).set_image(url=chosen_rat)
-        )
+        )  # type: ignore
         self.check_rat_capacity()
 
 

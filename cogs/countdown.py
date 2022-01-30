@@ -15,7 +15,7 @@ class Countdown(commands.Cog):
         self._last_member = None
 
     @slash_command(guild_ids=both_servers)
-    async def today(self, ctx: discord.ext.commands.Context) -> None:
+    async def today(self, ctx: discord.ApplicationContext) -> None:
         """Returns if it's a special day, or when the next one will be"""
         next_event, next_event_days = special_events_remaining[0]
         second_event, second_event_days = special_events_remaining[1]
@@ -27,7 +27,7 @@ class Countdown(commands.Cog):
             event_embed.title = f"{next_event} is in {next_event_days} days!"
             event_embed.description = f"...and {second_event} is in {second_event_days}"
 
-        await ctx.respond(embed=event_embed)
+        await ctx.respond(embed=event_embed)  # type: ignore
 
 
 def setup(bot):
