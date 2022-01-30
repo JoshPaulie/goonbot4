@@ -2,10 +2,9 @@ import os
 import random
 
 import discord
-from discord.commands import slash_command
-from discord.ext import commands
-
 from config import both_servers
+from discord.commands import Option, slash_command
+from discord.ext import commands
 
 
 class General(commands.Cog):
@@ -13,7 +12,7 @@ class General(commands.Cog):
         self.bot = bot
 
     @slash_command(guild_ids=both_servers)
-    async def pfp(self, ctx, user: discord.User = None):
+    async def pfp(self, ctx, user: Option(discord.Member, "Pick a goon to fetch pfp") = None):  # type: ignore
         """GOON BOT BEATS BONGO 1000:1"""
         if user is None:
             selected_user = ctx.author
