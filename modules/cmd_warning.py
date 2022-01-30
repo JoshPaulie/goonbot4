@@ -2,7 +2,7 @@ import discord
 import discord.ext.commands
 
 
-async def development_warning(ctx: discord.ext.commands.Context):
+async def development_warning(ctx: discord.ApplicationContext):
     warn_embed = discord.Embed(
         title="Under construction! 🚧",
         description="This command may not work as expected.",

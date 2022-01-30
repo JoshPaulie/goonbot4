@@ -1,7 +1,6 @@
 import random
 
 import discord
-import discord.ext.commands
 from config import both_servers
 from discord.commands import Option, slash_command
 from discord.ext import commands
@@ -13,11 +12,11 @@ class Affirmations(commands.Cog):
 
     @slash_command(guild_ids=both_servers)
     async def ily(
-        self, ctx: discord.ext.commands.Context, name: Option(discord.Member, "@Mention the Goon you love")
+        self, ctx: discord.ApplicationContext, name: Option(discord.Member, "@Mention the Goon you love")  # type: ignore
     ):
         """Tell someone you love them!"""
         emotes = ["😍", "😘", "🥰", "🤩", "🤗", "❤", "💕", "💞", "🖤"]
-        await ctx.respond(f"I love you, {name}! {random.choice(emotes)}")
+        await ctx.respond(f"I love you, {name}! {random.choice(emotes)}")  # type: ignore
 
 
 def setup(bot):
