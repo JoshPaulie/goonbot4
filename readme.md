@@ -8,6 +8,10 @@
 
 ## Install
 
-GB4 isn't made with other servers in mind. It's totally for local use. Repo is public for version control and external help.
+GB4 isn't made with other servers in mind. It's totally for local use. Repo is public for version control, local contributions/issues, and external help.
 
-📂 If you are making a copy for whatever reason `git clone`, rename .env.example -> .env, fill in relevant API keys
+📂 If you are making a copy for whatever reason
+* `git clone https://github.com/JoshPaulie/goonbot4.git`
+* rename .env.example -> .env
+  * fill in relevant API keys
+* add your server/guild in config.py
