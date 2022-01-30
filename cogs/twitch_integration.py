@@ -3,11 +3,10 @@ import os
 import arrow
 import discord
 import dotenv
+import twitch
 from config import both_servers
 from discord.commands import slash_command
 from discord.ext import commands
-
-import twitch
 
 dotenv.load_dotenv()
 
