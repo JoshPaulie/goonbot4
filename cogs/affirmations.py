@@ -1,7 +1,7 @@
 import random
 
 import discord
-from config import both_servers
+from config import all_servers
 from discord.commands import Option, slash_command
 from discord.ext import commands
 
@@ -10,7 +10,7 @@ class Affirmations(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def ily(
         self, ctx: discord.ApplicationContext, name: Option(discord.Member, "@Mention the Goon you love")  # type: ignore
     ):

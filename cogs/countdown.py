@@ -1,7 +1,7 @@
 import discord
 import discord.ext.commands
 import dotenv
-from config import both_servers
+from config import all_servers
 from discord.commands import slash_command
 from discord.ext import commands
 from helpers.special_dates import special_events_remaining
@@ -14,7 +14,7 @@ class Countdown(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def today(self, ctx: discord.ApplicationContext) -> None:
         """Returns if it's a special day, or when the next one will be"""
         next_event, next_event_days = special_events_remaining[0]

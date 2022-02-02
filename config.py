@@ -7,4 +7,4 @@ __version__ = "Beta-1.1"
 console = Console()
 dev_server = 510865274594131968
 goon_server = 177125557954281472
-both_servers = [dev_server, goon_server]
+all_servers = [dev_server, goon_server]

@@ -4,7 +4,7 @@ import arrow
 import cassiopeia as cass
 import discord
 import dotenv
-from config import both_servers
+from config import all_servers
 from discord.commands import Option, slash_command
 from discord.ext import commands
 from helpers.league.parsers import LastGameParser
@@ -37,7 +37,7 @@ class League(commands.Cog, name="League"):
         self.bot = bot
         self._last_member = None
 
-    @slash_command(guild_ids=both_servers, name="lastgame")
+    @slash_command(guild_ids=all_servers, name="lastgame")
     async def last_game(
         self,
         ctx: discord.ApplicationContext,

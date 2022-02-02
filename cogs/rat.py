@@ -1,7 +1,7 @@
 import random
 
 import discord
-from config import both_servers
+from config import all_servers
 from discord.commands import slash_command
 from discord.ext import commands
 
@@ -23,7 +23,7 @@ class Rat(commands.Cog):
             self.rats = self.caged_rats
             self.caged_rats = []
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def rat(self, ctx: discord.ApplicationContext):
         """Random rat"""
         chosen_rat = random.choice(self.rats)

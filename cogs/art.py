@@ -2,7 +2,7 @@ import random
 from os import name
 
 import discord
-from config import both_servers
+from config import all_servers
 from discord.commands import slash_command
 from discord.ext import commands
 
@@ -26,31 +26,31 @@ class Art(commands.Cog):
         art_embed.color = discord.Color.blurple()
         await ctx.respond(embed=art_embed)  # type: ignore
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def bringe(self, ctx: discord.ApplicationContext):
         """Better Cringe. Duh."""
         image = "https://cdn.discordapp.com/attachments/531913512822243358/651997904751427624/Hudboy.png"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=both_servers, name="")
+    @slash_command(guild_ids=all_servers, name="")
     async def gamerword(self, ctx: discord.ApplicationContext):
         """Small child with heart of stone"""
         image = "https://cdn.discordapp.com/attachments/531913512822243358/651997280290734101/gamer.jpg"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def pizza(self, ctx: discord.ApplicationContext):
         """finna get pizza pied"""
         image = "https://cdn.discordapp.com/attachments/177125557954281472/731242309446008893/image0.jpg"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def clown(self, ctx: discord.ApplicationContext):
         """...he's the joker...baby..."""
         image = "https://cdn.discordapp.com/attachments/177125557954281472/651996397041877006/clown_2.0.jpg"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def ygg(self, ctx: discord.ApplicationContext):
         """You good girl?"""
         image = (
@@ -59,7 +59,7 @@ class Art(commands.Cog):
         )
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def frog(self, ctx: discord.ApplicationContext):
         """Fantasy Frog Fetish"""
         image = [
@@ -70,7 +70,7 @@ class Art(commands.Cog):
         ]
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def joker(self, ctx):
         """Lex Fully Evolved"""
         image = (
@@ -79,7 +79,7 @@ class Art(commands.Cog):
         )
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=both_servers, name="real")
+    @slash_command(guild_ids=all_servers, name="real")
     async def real(self, ctx: discord.ApplicationContext):
         """Evidence of paranormal cativity"""
         cats = [
@@ -88,7 +88,7 @@ class Art(commands.Cog):
         ]
         await self.make_art_embed(ctx, cats)
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def rool(self, ctx: discord.ApplicationContext):
         """G8r man!"""
         image = "https://media1.tenor.com/images/c071dcb215cc774f730c1630a5971fb4/tenor.gif?itemid=12340096"

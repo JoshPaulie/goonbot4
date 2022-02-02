@@ -3,7 +3,7 @@ import os
 import arrow
 import discord
 import dotenv
-from config import both_servers
+from config import all_servers
 from discord.commands import slash_command
 from discord.ext import commands
 from pyyoutube import Api
@@ -25,12 +25,12 @@ class Youtube(commands.Cog, name="Youtube"):
         lastest_upload = self.yt_api.get_video_by_id(video_id=lastest_upload_id)  # type: ignore
         return f"https://www.youtube.com/watch?v={lastest_upload_id}"
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def campbell(self, ctx: discord.ApplicationContext):
         """Latest video by Dr. Soup 🍲"""
         await ctx.respond(self.get_latest_video_url("Campbellteaching"))  # type: ignore
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def synapse(self, ctx: discord.ApplicationContext):
         """League 😲 moments"""
         await ctx.respond(self.get_latest_video_url("Synapse1"))  # type: ignore

@@ -2,7 +2,7 @@ import os
 import random
 
 import discord
-from config import both_servers
+from config import all_servers
 from discord.commands import Option, slash_command
 from discord.ext import commands
 
@@ -11,7 +11,7 @@ class General(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def pfp(self, ctx: discord.ApplicationContext, user: Option(discord.Member, "Pick a goon to fetch pfp") = None):  # type: ignore
         """GOON BOT BEATS BONGO 1000:1"""
         if user is None:
@@ -26,18 +26,18 @@ class General(commands.Cog):
         embed.set_image(url=pfp_url)
         await ctx.respond(embed=embed)  # type: ignore
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def vtuber(self, ctx: discord.ApplicationContext):
         """Better than ever!"""
         await ctx.send("🤫", delete_after=1)
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def coinflip(self, ctx: discord.ApplicationContext):
         """Gives you heads or tails"""
         coin = random.choice(["Heads", "Tails"])
         await ctx.respond(embed=discord.Embed(title=coin, color=discord.Color.blurple()))  # type: ignore
 
-    @slash_command(guild_ids=both_servers)
+    @slash_command(guild_ids=all_servers)
     async def wni(self, ctx: discord.ApplicationContext):
         """Wow, no invite?"""
         complaint = random.choice(
