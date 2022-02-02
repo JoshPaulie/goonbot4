@@ -2,7 +2,7 @@
 
 from rich.console import Console
 
-__version__ = "Concept-1.0"
+__version__ = "Beta-1.0"
 
 console = Console()
 dev_server = 510865274594131968
