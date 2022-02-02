@@ -8,7 +8,6 @@ from config import all_servers
 from discord.commands import Option, slash_command
 from discord.ext import commands
 from helpers.league.parsers import LastGameParser
-from modules.cmd_warning import development_warning
 
 GOON_SUMMONER_NAMES = [
     "bexli",
@@ -85,7 +84,6 @@ class League(commands.Cog, name="League"):
 
         # Embed Sending
         await ctx.respond(embed=lg_embed)  # type: ignore
-        await development_warning(ctx)
 
 
 def setup(bot):
