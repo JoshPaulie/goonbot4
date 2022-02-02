@@ -13,12 +13,12 @@ bot = discord.Bot()
 @bot.event
 async def on_ready():
     """Event that runs when bot has successfully connected"""
-    console.log(f"{bot.user} has started")
+    console.log(f"{bot.user.name} has started")  # type: ignore
     await bot.change_presence(activity=discord.Game(name=__version__))
 
 
 if __name__ == "__main__":
-    console.rule(f"Goonbot 4 ({__version__})")
+    console.rule(f"🤖 Goonbot 4 ({__version__})")
     collect_cogs()
     load_cogs(bot)
     dotenv.load_dotenv()
