@@ -18,7 +18,7 @@ GB4 isn't made with other servers in mind, but is totally deployable. Repo is pu
   * fill in relevant API keys
 * add your server/guild in config.py
 
-## Special thanks & Packages used 
+## Special thanks / packages used 
 - [Pycord](https://github.com/Pycord-Development/pycord) Discord API
 - [Python-YouTube](https://github.com/sns-sdks/python-youtube) YouTube API
 - [Twitch-Python](https://github.com/PetterKraabol/Twitch-Python) Twitch.tv API
