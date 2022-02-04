@@ -15,3 +15,10 @@ GB4 isn't made with other servers in mind. It's totally for local use. Repo is p
 * rename .env.example -> .env
   * fill in relevant API keys
 * add your server/guild in config.py
+
+## Special thanks & Packages used
+- [Pycord](https://github.com/Pycord-Development/pycord) Discord API
+- [Python-YouTube](https://github.com/sns-sdks/python-youtube) YouTube API
+- [Twitch-Python](https://github.com/PetterKraabol/Twitch-Python) Twitch.tv API
+- [Rich](https://github.com/Textualize/rich) Pretty console, logging, debugging
+- [Cassiopeia](https://github.com/meraki-analytics/cassiopeia) League of Legends API
