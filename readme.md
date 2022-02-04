@@ -4,21 +4,23 @@
 
 ## About
 
-🧰 GB4 is a small *swiss army knife* bot for my private discord. It's written using the "new" [PyCord]("https://github.com/Pycord-Development/pycord") library. It's mostly a port of the last GB iteration to the new library, using all of the new Discord API features.
+🧰 GB4 is a small *swiss army knife* bot for my private discord. It's written using the "new" [PyCord]("https://github.com/Pycord-Development/pycord") library.
+
+Feel free to copy and paste any of the code to make your own bot, or use the discussions tab for questions about making your own Discord bot with Pycord.
 
 ## Install
 
-GB4 isn't made with other servers in mind. It's totally for local use. Repo is public for version control, local contributions/issues, and external help.
+GB4 isn't made with other servers in mind, but is totally deployable. Repo is public for others to reference, local contributions/issues, and external help.
 
-📂 If you are making a copy for whatever reason
+📂 If you are making a copy for whatever reason...
 * `git clone https://github.com/JoshPaulie/goonbot4.git`
 * rename .env.example -> .env
   * fill in relevant API keys
 * add your server/guild in config.py
 
-## Special thanks & Packages used
+## Special thanks & Packages used 
 - [Pycord](https://github.com/Pycord-Development/pycord) Discord API
 - [Python-YouTube](https://github.com/sns-sdks/python-youtube) YouTube API
 - [Twitch-Python](https://github.com/PetterKraabol/Twitch-Python) Twitch.tv API
-- [Rich](https://github.com/Textualize/rich) Pretty console, logging, debugging
 - [Cassiopeia](https://github.com/meraki-analytics/cassiopeia) League of Legends API
+- [Rich](https://github.com/Textualize/rich) Pretty console, logging, debugging
