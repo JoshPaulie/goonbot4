@@ -18,12 +18,8 @@ class LastGameParser:
         self.participant_enemy_team = self.participant.enemy_team
         self.participant_stats: cass.core.match.ParticipantStats = self.participant.stats
         self.participant_team: cass.core.match.Team = self.participant.team
-        self.participant_cs: int = (
-            self.participant_stats.total_minions_killed + self.participant_stats.neutral_minions_killed
-        )
-        self.participant_cs_per_min: int = round(
-            self.participant_cs / (self.last_match.duration.seconds / 60), 1
-        )
+        self.participant_cs: int = self.participant_stats.total_minions_killed + self.participant_stats.neutral_minions_killed
+        self.participant_cs_per_min: int = round(self.participant_cs / (self.last_match.duration.seconds / 60), 1)
 
         self.match_end_time: int = self.last_match.creation.shift(seconds=self.last_match.duration.seconds)
         self.match_timeline: cass.Match.timeline = self.participant.timeline
@@ -34,9 +30,11 @@ class LastGameParser:
         self.team_stats = TeamStatParser(self.participant_team)
         self.enemy_team_stats = TeamStatParser(self.participant_enemy_team)
 
+    @property
     def cs_per_min_stats(self) -> list[str]:
         return [fstat(self.participant_cs, "CS"), fstat(self.participant_cs_per_min, "CS/Min")]
 
+    @property
     def kda_stats(self) -> list[str]:
         return [
             fstat(
@@ -53,6 +51,7 @@ class LastGameParser:
             ),
         ]
 
+    @property
     def carry_stats(self) -> list[str]:
         return [
             fstat(
@@ -85,7 +84,9 @@ class LastGameParser:
             ),
         ]
 
+    @property
     def multi_kill_stats(self) -> list[str]:
+        """Returns a list of all the multikills (if any)"""
         multi_kills: list[Tuple[int, str]] = [
             (self.participant_stats.double_kills, "double kill(s)"),
             (self.participant_stats.triple_kills, "triple kill(s)"),
@@ -94,11 +95,13 @@ class LastGameParser:
         ]
         return [fstat(multi_kill[0], multi_kill[1]) for multi_kill in multi_kills if multi_kill[0] > 0]  # LOL
 
+    @property
     def other_stats(self) -> list[str]:
         return [
             fstat(self.participant_stats.longest_time_spent_living, "longest time alive 💨"),
         ]
 
+    @property
     def vision_stats(self) -> list[str]:
         return [
             fstat(self.participant_stats.vision_score, f"vision score"),
@@ -106,6 +109,7 @@ class LastGameParser:
             fstat(self.participant_stats.wards_killed, f"wards killed"),
         ]
 
+    @property
     def game_stats(self) -> list[str]:
         return [fstat(self.team_stats.kills, "team kills"), fstat(self.enemy_team_stats.kills, "enemy kills")]
 

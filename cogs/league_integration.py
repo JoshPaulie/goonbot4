@@ -8,6 +8,7 @@ import dotenv
 from config import all_servers
 from discord.commands import Option, slash_command
 from discord.ext import commands
+from helpers.league.format_stat import format_stat as fstat
 from helpers.league.parsers import LastGameParser
 
 GOON_SUMMONER_NAMES = [
@@ -57,24 +58,24 @@ class League(commands.Cog, name="League"):
             description=pipe_sep.join(
                 [
                     f"{'Victory!' if last_game.match_outcome is True else 'Defeat.'}",
-                    f"Match ended {arrow.get(last_game.match_end_time).humanize()}",
-                    f"Match lasted {last_game.last_match.duration.seconds // 60}:{last_game.last_match.duration.seconds % 60}",
+                    fstat(arrow.get(last_game.match_end_time).humanize(), "match ended"),
+                    fstat(f"{last_game.last_match.duration.seconds // 60}:{last_game.last_match.duration.seconds % 60}", "match duration"),
                 ]
             ),
         )
 
-        lg_embed.add_field(name="Final Score 🏁", value=pipe_sep.join(last_game.game_stats()), inline=False)
+        lg_embed.add_field(name="Final Score 🏁", value=pipe_sep.join(last_game.game_stats), inline=False)
         lg_embed.add_field(
             name="Team mates ⚓",
             value=pipe_sep.join([teammate.summoner.name for teammate in last_game.participant_team.participants if teammate.summoner.name != summoner.name]),
             inline=False,
         )
-        lg_embed.add_field(name="KDA Stats ⚔", value=pipe_sep.join(last_game.kda_stats()), inline=False)
-        lg_embed.add_field(name="CS Stats 👨‍🌾", value=pipe_sep.join(last_game.cs_per_min_stats()), inline=False)
-        lg_embed.add_field(name="Carry Stats 💪", value=pipe_sep.join(last_game.carry_stats()), inline=False)
-        if last_game.multi_kill_stats():
-            lg_embed.add_field(name="Multi Kill Stats", value=pipe_sep.join(last_game.multi_kill_stats()), inline=False)
-        lg_embed.add_field(name="Vision stats 👀", value=pipe_sep.join(last_game.vision_stats()))
+        lg_embed.add_field(name="KDA Stats ⚔", value=pipe_sep.join(last_game.kda_stats), inline=False)
+        lg_embed.add_field(name="CS Stats 👨‍🌾", value=pipe_sep.join(last_game.cs_per_min_stats), inline=False)
+        lg_embed.add_field(name="Carry Stats 💪", value=pipe_sep.join(last_game.carry_stats), inline=False)
+        if last_game.multi_kill_stats:
+            lg_embed.add_field(name="Multi Kill Stats", value=pipe_sep.join(last_game.multi_kill_stats), inline=False)
+        lg_embed.add_field(name="Vision stats 👀", value=pipe_sep.join(last_game.vision_stats))
 
         if last_game.match_outcome:
             lg_embed.color = discord.Color.brand_green()
@@ -82,7 +83,7 @@ class League(commands.Cog, name="League"):
             lg_embed.color = discord.Color.brand_red()
 
         lg_embed.set_thumbnail(url=last_game.participant.champion.image.url)
-        lg_embed.set_footer(text=last_game.match_queue_type.name.replace("_", " "))
+        lg_embed.set_footer(text=last_game.match_queue_type.name.replace("_", " ").title())
 
         # Embed Sending
         await ctx.respond(embed=lg_embed)  # type: ignore
