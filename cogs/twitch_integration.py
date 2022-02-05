@@ -15,7 +15,7 @@ class Twitch(commands.Cog, name="Twitch"):
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
-        self.ttv = twitch.Helix(os.getenv("TWITCH_CLIENT_ID"), os.getenv("TWITCH_CLIENT_SECRET")) # type: ignore
+        self.ttv = twitch.Helix(os.getenv("TWITCH_CLIENT_ID"), os.getenv("TWITCH_CLIENT_SECRET"))  # type: ignore
 
     def make_ttv_embed(self, ttv_username) -> discord.Embed:
         link_embed = discord.Embed(color=discord.Color.blurple())
