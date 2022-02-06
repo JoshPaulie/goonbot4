@@ -104,9 +104,9 @@ class LastGameParser:
     @property
     def vision_stats(self) -> list[str]:
         return [
-            fstat(self.participant_stats.vision_score, f"vision score"),
-            fstat(self.participant_stats.vision_wards_bought, f"pink(s) bought"),
-            fstat(self.participant_stats.wards_killed, f"wards killed"),
+            fstat(self.participant_stats.vision_score, "vision score"),
+            fstat(self.participant_stats.vision_wards_bought, "pink(s) bought"),
+            fstat(self.participant_stats.wards_killed, "wards killed"),
         ]
 
     @property
