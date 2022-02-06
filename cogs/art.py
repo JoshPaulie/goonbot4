@@ -53,10 +53,7 @@ class Art(commands.Cog):
     @slash_command(guild_ids=all_servers)
     async def ygg(self, ctx: discord.ApplicationContext):
         """You good girl?"""
-        image = (
-            "https://cdn.discordapp.com/attachments/"
-            "733685825379893339/756322976034586654/c00a411b-1fea-4593-b528-56cfc2dea9cf.png"
-        )
+        image = "https://cdn.discordapp.com/attachments/" "733685825379893339/756322976034586654/c00a411b-1fea-4593-b528-56cfc2dea9cf.png"
         await self.make_art_embed(ctx, image)
 
     @slash_command(guild_ids=all_servers)
@@ -73,20 +70,33 @@ class Art(commands.Cog):
     @slash_command(guild_ids=all_servers)
     async def joker(self, ctx):
         """Lex Fully Evolved"""
-        image = (
-            "https://cdn.discordapp.com/attachments/"
-            "177125557954281472/754429776571138238/lex_true_form.jpg"
-        )
+        image = "https://cdn.discordapp.com/attachments/" "177125557954281472/754429776571138238/lex_true_form.jpg"
         await self.make_art_embed(ctx, image)
 
     @slash_command(guild_ids=all_servers, name="real")
     async def real(self, ctx: discord.ApplicationContext):
-        """Evidence of paranormal cativity"""
-        cats = [
+        """Evidence of paranormal cativity and other anomalies"""
+        # Alt doc string: Anything made to be remotely realistic OR paranormal can be added here
+        # It's a dumpster fire at this point 🔥
+        #                                    🗑
+        evidence = [
             "https://cdn.discordapp.com/attachments/177125557954281472/810598965190983720/1612730989587.gif",
             "https://media1.tenor.com/images/5416c3b664a81ad99275761d701edcfd/tenor.gif?itemid=16255347",
+            "https://cdn.discordapp.com/attachments/177125557954281472/938132511270240356/1643438475633.gif",
+            "https://cdn.discordapp.com/attachments/177125557954281472/937579976159526942/1643578958193.gif",
+            "https://cdn.discordapp.com/attachments/177125557954281472/937577902113972254/1643260137906.jpg",
+            "https://cdn.discordapp.com/attachments/177125557954281472/936873848001929276/1643437992106.png",
+            "https://tenor.com/view/cat-naenae-gif-21093090",
+            "https://tenor.com/view/cat-dance-dancing-cat-gif-13017095",
+            "https://tenor.com/view/cat-dance-dancing-happy-moves-gif-4685977",
+            "https://tenor.com/view/alien-baby-gif-6385576",
+            "https://tenor.com/view/ruler-gif-23178618",
+            "https://tenor.com/view/grey-roswell-scary-autopsy-alien-gif-12272832",
+            "https://tenor.com/view/extraterrestrial-grey-ufo-abduction-scary-gif-12272827",
+            "https://cdn.discordapp.com/attachments/177125557954281472/902737733812895824/MATT.png",
+            "https://tenor.com/view/cat-dance-dancing-stand-gif-3536175",
         ]
-        await self.make_art_embed(ctx, cats)
+        await self.make_art_embed(ctx, evidence)
 
     @slash_command(guild_ids=all_servers)
     async def rool(self, ctx: discord.ApplicationContext):
