@@ -86,15 +86,15 @@ class Art(commands.Cog):
             "https://cdn.discordapp.com/attachments/177125557954281472/937579976159526942/1643578958193.gif",
             "https://cdn.discordapp.com/attachments/177125557954281472/937577902113972254/1643260137906.jpg",
             "https://cdn.discordapp.com/attachments/177125557954281472/936873848001929276/1643437992106.png",
-            "https://tenor.com/view/cat-naenae-gif-21093090",
-            "https://tenor.com/view/cat-dance-dancing-cat-gif-13017095",
-            "https://tenor.com/view/cat-dance-dancing-happy-moves-gif-4685977",
-            "https://tenor.com/view/alien-baby-gif-6385576",
-            "https://tenor.com/view/ruler-gif-23178618",
-            "https://tenor.com/view/grey-roswell-scary-autopsy-alien-gif-12272832",
-            "https://tenor.com/view/extraterrestrial-grey-ufo-abduction-scary-gif-12272827",
+            "https://tenor.com/view/cat-naenae-gif-21093090.gif",
+            "https://tenor.com/view/cat-dance-dancing-cat-gif-13017095.gif",
+            "https://tenor.com/view/cat-dance-dancing-happy-moves-gif-4685977.gif",
+            "https://tenor.com/view/alien-baby-gif-6385576.gif",
+            "https://tenor.com/view/ruler-gif-23178618.gif",
+            "https://tenor.com/view/grey-roswell-scary-autopsy-alien-gif-12272832.gif",
+            "https://tenor.com/view/extraterrestrial-grey-ufo-abduction-scary-gif-12272827.gif",
             "https://cdn.discordapp.com/attachments/177125557954281472/902737733812895824/MATT.png",
-            "https://tenor.com/view/cat-dance-dancing-stand-gif-3536175",
+            "https://tenor.com/view/cat-dance-dancing-stand-gif-3536175.gif",
         ]
         await self.make_art_embed(ctx, evidence)
 
