@@ -17,6 +17,11 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name=__version__))
 
 
+@bot.event
+async def on_application_command(ctx: discord.ApplicationContext):
+    console.log(ctx.author, ctx.command.qualified_name)
+
+
 if __name__ == "__main__":
     console.rule(f"🤖 Goonbot 4 ({__version__})")
     collect_cogs()
