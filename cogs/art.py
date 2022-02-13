@@ -1,8 +1,6 @@
 import random
-from os import name
 
 import discord
-from config import all_servers
 from discord.commands import slash_command
 from discord.ext import commands
 

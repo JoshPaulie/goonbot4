@@ -1,11 +1,9 @@
-import json
 import os
 
 import arrow
 import cassiopeia as cass
 import discord
 import dotenv
-from config import all_servers
 from discord.commands import Option, slash_command
 from discord.ext import commands
 from helpers.league.format_stat import format_stat as fstat

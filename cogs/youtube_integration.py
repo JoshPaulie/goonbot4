@@ -1,9 +1,7 @@
 import os
 
-import arrow
 import discord
 import dotenv
-from config import all_servers
 from discord.commands import slash_command
 from discord.ext import commands
 from pyyoutube import Api

@@ -1,7 +1,6 @@
 import discord
 import discord.ext.commands
 import dotenv
-from config import all_servers
 from discord.commands import slash_command
 from discord.ext import commands
 from helpers.special_dates import special_events_remaining
