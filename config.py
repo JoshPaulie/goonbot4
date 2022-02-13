@@ -5,7 +5,7 @@ import os
 import dotenv
 from rich.console import Console
 
-__version__ = "Beta-1.1"
+__version__ = "Beta-2"
 dotenv.load_dotenv()
 
 
