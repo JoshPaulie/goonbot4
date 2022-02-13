@@ -9,12 +9,13 @@ class LastGameParser:
     """Tidy's up the stats of given summoner's last game"""
 
     def __init__(self, summoner: cass.Summoner) -> None:
-        self.summoner_name = summoner
+        self.summoner = summoner
+        self.summoner_name = summoner.name
 
         # Cass Objects / QoL Variables
-        self.last_match: cass.Match = summoner.match_history[0]
+        self.last_match: cass.Match = self.summoner.match_history[0]
 
-        self.participant: cass.core.match.Participant = self.last_match.participants[summoner]  # type: ignore
+        self.participant: cass.core.match.Participant = self.last_match.participants[self.summoner]  # type: ignore
         self.participant_enemy_team = self.participant.enemy_team
         self.participant_stats: cass.core.match.ParticipantStats = self.participant.stats
         self.participant_team: cass.core.match.Team = self.participant.team
@@ -29,6 +30,10 @@ class LastGameParser:
         # Spaghetti time! 🍝
         self.team_stats = TeamStatParser(self.participant_team)
         self.enemy_team_stats = TeamStatParser(self.participant_enemy_team)
+
+    @property
+    def teammates(self) -> list[str]:
+        return [teammate.summoner.name for teammate in self.participant_team.participants if teammate.summoner != self.summoner]
 
     @property
     def cs_per_min_stats(self) -> list[str]:
@@ -82,6 +87,7 @@ class LastGameParser:
                 ),
                 "death partication 💀",
             ),
+            fstat(f"{round(self.participant_stats.longest_time_spent_living / 60, 1)}m", "longest time alive 💨"),
         ]
 
     @property
@@ -96,12 +102,6 @@ class LastGameParser:
         return [fstat(multi_kill[0], multi_kill[1]) for multi_kill in multi_kills if multi_kill[0] > 0]  # LOL
 
     @property
-    def other_stats(self) -> list[str]:
-        return [
-            fstat(self.participant_stats.longest_time_spent_living, "longest time alive 💨"),
-        ]
-
-    @property
     def vision_stats(self) -> list[str]:
         return [
             fstat(self.participant_stats.vision_score, "vision score"),
@@ -112,6 +112,14 @@ class LastGameParser:
     @property
     def game_stats(self) -> list[str]:
         return [fstat(self.team_stats.kills, "team kills"), fstat(self.enemy_team_stats.kills, "enemy kills")]
+
+    @property
+    def final_build(self) -> list[str]:
+        return [item.name for item in self.participant_stats.items if item is not None]
+
+    @property
+    def summoner_spells(self) -> list[str]:
+        return [self.participant.summoner_spell_d.name, self.participant.summoner_spell_f.name]
 
 
 class TeamStatParser:
