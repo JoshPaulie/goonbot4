@@ -36,7 +36,7 @@ class LastGameParser:
         return [teammate.summoner.name for teammate in self.participant_team.participants if teammate.summoner != self.summoner]
 
     @property
-    def cs_per_min_stats(self) -> list[str]:
+    def cs_stats(self) -> list[str]:
         return [fstat(self.participant_cs, "CS"), fstat(self.participant_cs_per_min, "CS/Min")]
 
     @property

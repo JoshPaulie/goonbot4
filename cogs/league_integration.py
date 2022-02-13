@@ -66,7 +66,7 @@ class League(commands.Cog, name="League"):
         lg_embed.add_field(name="Team mates ⚓", value=pipe_sep.join(last_game.teammates), inline=False)
         lg_embed.add_field(name="Build 🏋️‍♂️", value=pipe_sep.join([*last_game.summoner_spells, *last_game.final_build]))
         lg_embed.add_field(name="KDA Stats ⚔", value=pipe_sep.join(last_game.kda_stats), inline=False)
-        lg_embed.add_field(name="CS Stats 👨‍🌾", value=pipe_sep.join(last_game.cs_per_min_stats), inline=False)
+        lg_embed.add_field(name="CS Stats 👨‍🌾", value=pipe_sep.join(last_game.cs_stats), inline=False)
         lg_embed.add_field(name="Carry Stats 💪", value=pipe_sep.join(last_game.carry_stats), inline=False)
         if last_game.multi_kill_stats:
             lg_embed.add_field(name="Multi Kill Stats", value=pipe_sep.join(last_game.multi_kill_stats), inline=False)
