@@ -1,4 +1,5 @@
 """ Config file """
+"""I'm not super sure what is going on from in this file."""
 
 import os
 

@@ -25,12 +25,12 @@ class Youtube(commands.Cog, name="Youtube"):
         lastest_upload = self.yt_api.get_video_by_id(video_id=lastest_upload_id)  # type: ignore
         return f"https://www.youtube.com/watch?v={lastest_upload_id}"
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def campbell(self, ctx: discord.ApplicationContext):
         """Latest video by Dr. Soup 🍲"""
         await ctx.respond(self.get_latest_video_url("UCF9IOB2TExg3QIBupFtBDxg"))  # type: ignore
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def synapse(self, ctx: discord.ApplicationContext):
         """League 😲 moments"""
         await ctx.respond(self.get_latest_video_url("UCVw8WSz1c_cazwOA0Yk_P_w"))  # type: ignore

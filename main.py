@@ -4,10 +4,11 @@ import os
 import discord
 import dotenv
 
-from config import __version__, console
+from config import __version__, all_servers, console
 from modules.init_functions import collect_cogs, load_cogs
 
 bot = discord.Bot()
+bot.debug_guilds = all_servers
 
 
 @bot.event
@@ -19,7 +20,7 @@ async def on_ready():
 
 @bot.event
 async def on_application_command(ctx: discord.ApplicationContext):
-    console.log(ctx.author, ctx.command.qualified_name)
+    console.log(f"{ctx.author.name} used [underline]{ctx.command.qualified_name}[/]")
 
 
 if __name__ == "__main__":
