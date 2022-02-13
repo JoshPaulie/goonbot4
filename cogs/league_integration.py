@@ -38,7 +38,7 @@ class League(commands.Cog, name="League"):
         self.bot = bot
         self._last_member = None
 
-    @slash_command(guild_ids=all_servers, name="lastgame")
+    @slash_command(name="lastgame")
     async def last_game(
         self,
         ctx: discord.ApplicationContext,
@@ -67,7 +67,9 @@ class League(commands.Cog, name="League"):
         lg_embed.add_field(name="Final Score 🏁", value=pipe_sep.join(last_game.game_stats), inline=False)
         lg_embed.add_field(
             name="Team mates ⚓",
-            value=pipe_sep.join([teammate.summoner.name for teammate in last_game.participant_team.participants if teammate.summoner.name != summoner.name]),
+            value=pipe_sep.join(
+                [teammate.summoner.name for teammate in last_game.participant_team.participants if teammate.summoner.name != summoner.name]
+            ),
             inline=False,
         )
         lg_embed.add_field(name="KDA Stats ⚔", value=pipe_sep.join(last_game.kda_stats), inline=False)

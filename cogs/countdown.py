@@ -14,7 +14,7 @@ class Countdown(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def today(self, ctx: discord.ApplicationContext) -> None:
         """Returns if it's a special day, or when the next one will be"""
         next_event, next_event_days = special_events_remaining[0]

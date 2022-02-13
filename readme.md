@@ -17,6 +17,7 @@ GB4 isn't made with other servers in mind, but is totally deployable. Repo is pu
 * rename .env.example -> .env
   * fill in relevant API keys
 * add your server/guild in config.py
+  * You can do this by _removing_ my private guilds from the all_servers list and _adding_ your own server(s).
 
 ## Special thanks / packages used 
 - [Pycord](https://github.com/Pycord-Development/pycord) Discord API

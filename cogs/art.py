@@ -26,37 +26,37 @@ class Art(commands.Cog):
         art_embed.color = discord.Color.blurple()
         await ctx.respond(embed=art_embed)  # type: ignore
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def bringe(self, ctx: discord.ApplicationContext):
         """Better Cringe. Duh."""
         image = "https://cdn.discordapp.com/attachments/531913512822243358/651997904751427624/Hudboy.png"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=all_servers, name="")
+    @slash_command()
     async def gamerword(self, ctx: discord.ApplicationContext):
         """Small child with heart of stone"""
         image = "https://cdn.discordapp.com/attachments/531913512822243358/651997280290734101/gamer.jpg"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def pizza(self, ctx: discord.ApplicationContext):
         """finna get pizza pied"""
         image = "https://cdn.discordapp.com/attachments/177125557954281472/731242309446008893/image0.jpg"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def clown(self, ctx: discord.ApplicationContext):
         """...he's the joker...baby..."""
         image = "https://cdn.discordapp.com/attachments/177125557954281472/651996397041877006/clown_2.0.jpg"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def ygg(self, ctx: discord.ApplicationContext):
         """You good girl?"""
         image = "https://cdn.discordapp.com/attachments/" "733685825379893339/756322976034586654/c00a411b-1fea-4593-b528-56cfc2dea9cf.png"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def frog(self, ctx: discord.ApplicationContext):
         """Fantasy Frog Fetish"""
         image = [
@@ -67,13 +67,13 @@ class Art(commands.Cog):
         ]
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def joker(self, ctx):
         """Lex Fully Evolved"""
         image = "https://cdn.discordapp.com/attachments/" "177125557954281472/754429776571138238/lex_true_form.jpg"
         await self.make_art_embed(ctx, image)
 
-    @slash_command(guild_ids=all_servers, name="real")
+    @slash_command(name="real")
     async def real(self, ctx: discord.ApplicationContext):
         """Evidence of paranormal cativity and other anomalies"""
         # Alt doc string: Anything made to be remotely realistic OR paranormal can be added here
@@ -98,7 +98,7 @@ class Art(commands.Cog):
         ]
         await self.make_art_embed(ctx, evidence)
 
-    @slash_command(guild_ids=all_servers)
+    @slash_command()
     async def rool(self, ctx: discord.ApplicationContext):
         """G8r man!"""
         image = "https://media1.tenor.com/images/c071dcb215cc774f730c1630a5971fb4/tenor.gif?itemid=12340096"
