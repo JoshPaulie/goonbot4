@@ -75,6 +75,13 @@ class LastGameParser:
             ),
             fstat(
                 calc_participant_percent(
+                    self.participant_stats.gold_earned,
+                    self.team_stats.gold_earned,
+                ),
+                "team gold",
+            ),
+            fstat(
+                calc_participant_percent(
                     self.participant_stats.kills + self.participant_stats.assists,
                     self.team_stats.kills,
                 ),
@@ -87,14 +94,7 @@ class LastGameParser:
                 ),
                 "death partication",
             ),
-            fstat(
-                calc_participant_percent(
-                    self.participant_stats.gold_earned,
-                    self.team_stats.gold_earned,
-                ),
-                "team gold",
-            ),
-            fstat(f"{round(self.participant_stats.longest_time_spent_living / 60, 1)}m", "longest time alive"),
+            # fstat(f"{round(self.participant_stats.longest_time_spent_living / 60, 1)}m", "longest time alive"), #? Disabled, unexpected behavior keeping for reference
             *self.multi_kill_stats,
         ]
 
@@ -162,3 +162,14 @@ class TeamStatParser:
             self.deaths += participant_stats.deaths
             self.assists += participant_stats.assists
             self.gold_earned += participant_stats.gold_earned
+
+
+class LastTeamParser:
+    """Lmao"""
+
+    def __init__(self, summoner: cass.Summoner) -> None:
+        self.summoner = summoner
+        self.last_match: cass.Match = self.summoner.match_history[0]
+        self.participant: cass.core.match.Participant = self.last_match.participants[self.summoner]  # type: ignore
+        self.participant_team: cass.core.match.Team = self.participant.team
+        self.last_teammates: list[cass.core.match.Participant] = [teammate for teammate in self.participant_team.participants]

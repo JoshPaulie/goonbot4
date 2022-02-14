@@ -7,8 +7,9 @@ import dotenv
 from config import console
 from discord.commands import Option, slash_command
 from discord.ext import commands
+from helpers.league.calculators import calc_kda
 from helpers.league.format_stat import format_stat as fstat
-from helpers.league.parsers import LastGameParser
+from helpers.league.parsers import LastGameParser, LastTeamParser
 
 GOON_SUMMONER_NAMES = [
     "bexli",
@@ -81,6 +82,24 @@ class League(commands.Cog, name="League"):
 
         # Embed Sending
         await ctx.respond(embed=lg_embed)  # type: ignore
+
+    @slash_command(name="lastteam")
+    async def last_team(
+        self,
+        ctx: discord.ApplicationContext,
+        summoner_name: Option(str, "Summoner name", autocomplete=get_goon_names),  # type: ignore
+    ):
+        """Josh's troll analysis"""
+        summoner: cass.Summoner = cass.get_summoner(name=summoner_name, region="NA")
+        last_team = LastTeamParser(summoner)
+
+        lt_embed = discord.Embed(title="Last team", description="Under development")
+        for teammate in last_team.last_teammates:
+            lt_embed.add_field(
+                name=teammate.summoner.name, value=calc_kda(teammate.stats.kills, teammate.stats.deaths, teammate.stats.assists), inline=False
+            )
+
+        await ctx.respond(embed=lt_embed)  # type: ignore
 
 
 def setup(bot):
