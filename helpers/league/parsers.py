@@ -16,7 +16,7 @@ class LastGameParser:
         self.last_match: cass.Match = self.summoner.match_history[0]
 
         self.participant: cass.core.match.Participant = self.last_match.participants[self.summoner]  # type: ignore
-        self.participant_enemy_team = self.participant.enemy_team
+        self.participant_enemy_team: cass.core.match.Team = self.participant.enemy_team
         self.participant_stats: cass.core.match.ParticipantStats = self.participant.stats
         self.participant_team: cass.core.match.Team = self.participant.team
         self.participant_cs: int = self.participant_stats.total_minions_killed + self.participant_stats.neutral_minions_killed
@@ -37,7 +37,7 @@ class LastGameParser:
 
     @property
     def cs_stats(self) -> list[str]:
-        return [fstat(self.participant_cs, "CS"), fstat(self.participant_cs_per_min, "CS/Min")]
+        return [fstat(self.participant_cs, f"CS ({self.participant_cs_per_min}/min)")]
 
     @property
     def kda_stats(self) -> list[str]:
@@ -57,37 +57,45 @@ class LastGameParser:
         ]
 
     @property
-    def carry_stats(self) -> list[str]:
+    def carry_stats(self) -> list:
         return [
             fstat(
                 calc_participant_percent(
                     self.participant_stats.total_damage_dealt_to_champions,
                     self.team_stats.total_damage_to_champions,
                 ),
-                "vs champs 🩸",
+                "team dmg vs champs",
             ),
             fstat(
                 calc_participant_percent(
                     self.participant_stats.damage_dealt_to_objectives,
                     self.team_stats.total_damage_to_objectives,
                 ),
-                "vs objectives 🛡",
+                "team dmg vs objectives",
             ),
             fstat(
                 calc_participant_percent(
                     self.participant_stats.kills + self.participant_stats.assists,
                     self.team_stats.kills,
                 ),
-                "kill partication 💢",
+                "kill partication",
             ),
             fstat(
                 calc_participant_percent(
                     self.participant_stats.deaths,
                     self.team_stats.deaths,
                 ),
-                "death partication 💀",
+                "death partication",
             ),
-            fstat(f"{round(self.participant_stats.longest_time_spent_living / 60, 1)}m", "longest time alive 💨"),
+            fstat(
+                calc_participant_percent(
+                    self.participant_stats.gold_earned,
+                    self.team_stats.gold_earned,
+                ),
+                "team gold",
+            ),
+            fstat(f"{round(self.participant_stats.longest_time_spent_living / 60, 1)}m", "longest time alive"),
+            *self.multi_kill_stats,
         ]
 
     @property
@@ -121,6 +129,15 @@ class LastGameParser:
     def summoner_spells(self) -> list[str]:
         return [self.participant.summoner_spell_d.name, self.participant.summoner_spell_f.name]
 
+    @property
+    def spells_used(self) -> list[str]:
+        return [
+            fstat(self.participant_stats.spell_1_casts, "Qs"),
+            fstat(self.participant_stats.spell_2_casts, "Ws"),
+            fstat(self.participant_stats.spell_3_casts, "Es"),
+            fstat(self.participant_stats.spell_4_casts, "Rs"),
+        ]
+
 
 class TeamStatParser:
     """Mostly adds-up the entire team's worth of a particular stat"""
@@ -133,6 +150,7 @@ class TeamStatParser:
         self.kills: int = 0
         self.deaths: int = 0
         self.assists: int = 0
+        self.gold_earned: int = 0
 
         for participant in self.team.participants:
             participant: cass.core.match.Participant
@@ -143,3 +161,4 @@ class TeamStatParser:
             self.kills += participant_stats.kills
             self.deaths += participant_stats.deaths
             self.assists += participant_stats.assists
+            self.gold_earned += participant_stats.gold_earned

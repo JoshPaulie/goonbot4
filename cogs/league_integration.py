@@ -4,6 +4,7 @@ import arrow
 import cassiopeia as cass
 import discord
 import dotenv
+from config import console
 from discord.commands import Option, slash_command
 from discord.ext import commands
 from helpers.league.format_stat import format_stat as fstat
@@ -55,7 +56,7 @@ class League(commands.Cog, name="League"):
             title=f"{summoner.name}'s last game",
             description=pipe_sep.join(
                 [
-                    f"{'Victory!' if last_game.match_outcome is True else 'Defeat.'}",
+                    f"{'**Victory!**' if last_game.match_outcome is True else '**Defeat.**'}",
                     fstat(arrow.get(last_game.match_end_time).humanize(), "match ended"),
                     fstat(f"{last_game.last_match.duration.seconds // 60}:{last_game.last_match.duration.seconds % 60}", "match duration"),
                 ]
@@ -63,14 +64,12 @@ class League(commands.Cog, name="League"):
         )
 
         lg_embed.add_field(name="Final Score 🏁", value=pipe_sep.join(last_game.game_stats), inline=False)
-        lg_embed.add_field(name="Team mates ⚓", value=pipe_sep.join(last_game.teammates), inline=False)
+        lg_embed.add_field(name="Teammates ⚓", value=pipe_sep.join(last_game.teammates), inline=False)
         lg_embed.add_field(name="Build 🏋️‍♂️", value=pipe_sep.join([*last_game.summoner_spells, *last_game.final_build]))
+        lg_embed.add_field(name="Spell Count 🎯", value=pipe_sep.join(last_game.spells_used), inline=False)
         lg_embed.add_field(name="KDA Stats ⚔", value=pipe_sep.join(last_game.kda_stats), inline=False)
-        lg_embed.add_field(name="CS Stats 👨‍🌾", value=pipe_sep.join(last_game.cs_stats), inline=False)
+        lg_embed.add_field(name="Farm 👨‍🌾 & Vision Stats 👀", value=pipe_sep.join([*last_game.cs_stats, *last_game.vision_stats]), inline=False)
         lg_embed.add_field(name="Carry Stats 💪", value=pipe_sep.join(last_game.carry_stats), inline=False)
-        if last_game.multi_kill_stats:
-            lg_embed.add_field(name="Multi Kill Stats", value=pipe_sep.join(last_game.multi_kill_stats), inline=False)
-        lg_embed.add_field(name="Vision stats 👀", value=pipe_sep.join(last_game.vision_stats))
 
         if last_game.match_outcome:
             lg_embed.color = discord.Color.brand_green()
