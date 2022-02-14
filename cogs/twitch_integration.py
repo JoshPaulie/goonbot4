@@ -61,7 +61,7 @@ class Twitch(commands.Cog, name="Twitch"):
 
     @slash_command()
     async def dangheesling(self, ctx: discord.ApplicationContext):
-        """Link to Tyler's Stream"""
+        """Link to Danny G's Stream"""
         await ctx.respond(embed=self.make_ttv_embed("dangheesling"))  # type: ignore
 
     @slash_command()
