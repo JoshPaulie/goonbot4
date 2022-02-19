@@ -4,12 +4,11 @@ import arrow
 import cassiopeia as cass
 import discord
 import dotenv
-from config import console
 from discord.commands import Option, slash_command
 from discord.ext import commands
 from helpers.league.calculators import calc_kda
 from helpers.league.format_stat import format_stat as fstat
-from helpers.league.parsers import LastGameParser, LastTeamParser
+from helpers.league.parsers import LastGameParser, LastTeamParser, SummonerLookup
 
 GOON_SUMMONER_NAMES = [
     "bexli",
@@ -33,6 +32,9 @@ async def get_goon_names(ctx: discord.AutocompleteContext):
     return sorted([name for name in GOON_SUMMONER_NAMES if name.startswith(ctx.value.lower())])
 
 
+pipe_sep: str = " | "
+
+
 class League(commands.Cog, name="League"):
     def __init__(self, bot):
         self.bot = bot
@@ -49,7 +51,6 @@ class League(commands.Cog, name="League"):
         # QoL Variables
         summoner: cass.Summoner = cass.get_summoner(name=summoner_name, region="NA")
         last_game = LastGameParser(summoner)
-        pipe_sep: str = " | "
 
         # Embed building
 
@@ -95,11 +96,29 @@ class League(commands.Cog, name="League"):
 
         lt_embed = discord.Embed(title="Last team", description="Under development")
         for teammate in last_team.last_teammates:
-            lt_embed.add_field(
-                name=teammate.summoner.name, value=calc_kda(teammate.stats.kills, teammate.stats.deaths, teammate.stats.assists), inline=False
-            )
+            troll_stats = last_team.make_troll_stats(teammate.stats)
+            if troll_stats:
+                lt_embed.add_field(name=teammate.summoner.name, value=pipe_sep.join(last_team.make_troll_stats(teammate.stats)), inline=False)
+            else:
+                lt_embed.add_field(name=teammate.summoner.name, value="🤐", inline=True)
 
         await ctx.respond(embed=lt_embed)  # type: ignore
+
+    @slash_command(name="who")
+    async def who(
+        self,
+        ctx: discord.ApplicationContext,
+        summoner_name: Option(str, "Summoner name", autocomplete=get_goon_names),  # type: ignore
+    ):
+        """Not working!"""
+        summoner: cass.Summoner = cass.get_summoner(name=summoner_name, region="NA")
+        lookup_results = SummonerLookup(summoner=summoner)
+
+        who_embed = discord.Embed(title=summoner.name)
+
+        summ_rank_fives = summoner.league_entries.fives
+        who_embed.add_field(name="Fives Rank", value=summ_rank_fives)
+        await ctx.respond(embed=who_embed)  # type: ignore
 
 
 def setup(bot):
