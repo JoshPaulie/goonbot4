@@ -79,7 +79,6 @@ class Art(commands.Cog):
         #                                    🗑
         evidence = [
             "https://cdn.discordapp.com/attachments/177125557954281472/810598965190983720/1612730989587.gif",
-            "https://media1.tenor.com/images/5416c3b664a81ad99275761d701edcfd/tenor.gif?itemid=16255347",
             "https://cdn.discordapp.com/attachments/177125557954281472/938132511270240356/1643438475633.gif",
             "https://cdn.discordapp.com/attachments/177125557954281472/937579976159526942/1643578958193.gif",
             "https://cdn.discordapp.com/attachments/177125557954281472/937577902113972254/1643260137906.jpg",
