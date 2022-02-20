@@ -4,9 +4,9 @@ import arrow
 import cassiopeia as cass
 import discord
 import dotenv
+from config import bexli
 from discord.commands import Option, slash_command
 from discord.ext import commands
-from helpers.league.calculators import calc_kda
 from helpers.league.format_stat import format_stat as fstat
 from helpers.league.parsers import LastGameParser, LastTeamParser, SummonerLookup
 
@@ -85,6 +85,7 @@ class League(commands.Cog, name="League"):
         await ctx.respond(embed=lg_embed)  # type: ignore
 
     @slash_command(name="lastteam")
+    @discord.permissions.is_user(user=bexli)
     async def last_team(
         self,
         ctx: discord.ApplicationContext,
@@ -94,6 +95,7 @@ class League(commands.Cog, name="League"):
         summoner: cass.Summoner = cass.get_summoner(name=summoner_name, region="NA")
         last_team = LastTeamParser(summoner)
 
+        # Embed building
         lt_embed = discord.Embed(title="Last team", description="Under development")
         for teammate in last_team.last_teammates:
             troll_stats = last_team.make_troll_stats(teammate.stats)
@@ -105,12 +107,13 @@ class League(commands.Cog, name="League"):
         await ctx.respond(embed=lt_embed)  # type: ignore
 
     @slash_command(name="who")
+    @discord.permissions.is_user(user=bexli)
     async def who(
         self,
         ctx: discord.ApplicationContext,
         summoner_name: Option(str, "Summoner name", autocomplete=get_goon_names),  # type: ignore
     ):
-        """Not working!"""
+        """Summoner lookup command"""
         summoner: cass.Summoner = cass.get_summoner(name=summoner_name, region="NA")
         lookup_results = SummonerLookup(summoner=summoner)
 
