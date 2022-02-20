@@ -1,6 +1,7 @@
 import random
 
 import discord
+from config import console
 from discord.commands import slash_command
 from discord.ext import commands
 
@@ -10,7 +11,7 @@ class Art(commands.Cog):
         self.bot = bot
 
     @staticmethod
-    async def make_art_embed(ctx: discord.ApplicationContext, image) -> None:
+    async def make_art_embed(ctx: discord.ApplicationContext, image: str) -> None:
 
         art_embed = discord.Embed()
 
@@ -22,6 +23,7 @@ class Art(commands.Cog):
 
         art_embed.set_author(name=ctx.command.name)  # type: ignore
         art_embed.color = discord.Color.blurple()
+        console.log(f"🐛🔨 Art was sent -{ctx.command.name}: {image}")
         await ctx.respond(embed=art_embed)  # type: ignore
 
     @slash_command()
