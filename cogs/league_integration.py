@@ -85,7 +85,7 @@ class League(commands.Cog, name="League"):
         await ctx.respond(embed=lg_embed)  # type: ignore
 
     @slash_command(name="lastteam")
-    @discord.permissions.is_user(user=bexli)
+    # @discord.permissions.is_user(user=bexli)
     async def last_team(
         self,
         ctx: discord.ApplicationContext,
@@ -107,7 +107,7 @@ class League(commands.Cog, name="League"):
         await ctx.respond(embed=lt_embed)  # type: ignore
 
     @slash_command(name="who")
-    @discord.permissions.is_user(user=bexli)
+    # @discord.permissions.is_user(user=bexli)
     async def who(
         self,
         ctx: discord.ApplicationContext,
