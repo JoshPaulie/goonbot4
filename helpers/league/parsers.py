@@ -194,7 +194,7 @@ class LastTeamParser:
             min_thresh: int | float | bool
 
         troll_stats = [
-            StatDetail(teammate.deaths + teammate.assists, choice(["FEEDER", "Feedster", "Sus!"]), teammate.kills),
+            StatDetail(teammate.deaths, choice(["FEEDER", "Feedster", "Sus!"]), teammate.kills + teammate.assists),
             StatDetail(teammate.total_heals_on_teammates, choice(["Heal Slut"]), 10_000),
             # StatDetail(teammate.total_damage_shielded_on_teammates, "Big shielder 🛡", 5000),
             StatDetail(teammate.nexus_takedowns + teammate.inhibitor_takedowns, "Tower Destroyer", 4),
