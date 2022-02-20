@@ -7,7 +7,9 @@ import dotenv
 from config import __version__, all_servers, console
 from modules.init_functions import collect_cogs, load_cogs
 
-bot = discord.Bot()
+intents = discord.Intents.default()
+intents.members = True
+bot = discord.Bot(intents=intents)
 bot.debug_guilds = all_servers
 
 
