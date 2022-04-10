@@ -2,6 +2,15 @@
 
 ![logo](https://media.discordapp.net/attachments/787711120026501152/933826376207847504/IMG_0355.png)
 
+## Authors Note
+
+I've learned a ton between this rewrite and now, just a few short months later. I will be doing a major refactor (again) in the coming months.
+
+Fatal flaws of current generation:
+- I didn't specify versions in my requirements.txt, resulting in breakage on new machines
+- The project structure itself is messy and could be cleaned up by making the bot a proper package with `__init__.py` and `__main__.py`
+- Not all third party packages are async, resulting in hangups and unexpected behavior
+
 ## About
 
 🧰 GB4 is a small *swiss army knife* bot for my private discord. It's written using the "new" [PyCord]("https://github.com/Pycord-Development/pycord") library.
